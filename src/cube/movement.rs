@@ -343,10 +343,10 @@ mod tests {
 
     #[test]
     fn upper_clockwise() {
-        let mut solved_cube = new_ref_cube_right_turned_clockwise();
-        solved_cube.u_clock();
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.u_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
@@ -420,10 +420,10 @@ mod tests {
 
     #[test]
     fn upper_counter_clockwise() {
-        let mut solved_cube = new_ref_cube_right_turned_clockwise();
-        solved_cube.u_counter_clock();
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.u_counter_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Red,
@@ -497,10 +497,10 @@ mod tests {
 
     #[test]
     fn upper_double() {
-        let mut solved_cube = new_ref_cube_right_turned_clockwise();
-        solved_cube.u_double();
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.u_double();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Red,
@@ -574,10 +574,10 @@ mod tests {
 
     #[test]
     fn left_clockwise() {
-        let mut solved_cube = new_ref_cube_front_turned_clockwise();
-        solved_cube.l_clock();
+        let mut ref_cube = new_ref_cube_front_turned_clockwise();
+        ref_cube.l_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Orange,
@@ -651,10 +651,10 @@ mod tests {
 
     #[test]
     fn left_counter_clockwise() {
-        let mut solved_cube = new_ref_cube_front_turned_clockwise();
-        solved_cube.l_counter_clock();
+        let mut ref_cube = new_ref_cube_front_turned_clockwise();
+        ref_cube.l_counter_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Red,
@@ -728,10 +728,10 @@ mod tests {
 
     #[test]
     fn left_double() {
-        let mut solved_cube = new_ref_cube_front_turned_clockwise();
-        solved_cube.l_double();
+        let mut ref_cube = new_ref_cube_front_turned_clockwise();
+        ref_cube.l_double();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Green,
@@ -805,10 +805,10 @@ mod tests {
 
     #[test]
     fn front_clockwise() {
-        let mut solved_cube = new_ref_cube_right_turned_clockwise();
-        solved_cube.f_clock();
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.f_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
@@ -882,10 +882,10 @@ mod tests {
 
     #[test]
     fn front_counter_clockwise() {
-        let mut solved_cube = new_ref_cube_right_turned_clockwise();
-        solved_cube.f_counter_clock();
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.f_counter_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
@@ -959,10 +959,10 @@ mod tests {
 
     #[test]
     fn front_double() {
-        let mut solved_cube = new_ref_cube_right_turned_clockwise();
-        solved_cube.f_double();
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.f_double();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
@@ -1036,10 +1036,10 @@ mod tests {
 
     #[test]
     fn right_clockwise() {
-        let mut solved_cube = new_ref_cube_front_turned_clockwise();
-        solved_cube.r_clock();
+        let mut ref_cube = new_ref_cube_front_turned_clockwise();
+        ref_cube.r_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
@@ -1113,10 +1113,10 @@ mod tests {
 
     #[test]
     fn right_counter_clockwise() {
-        let mut solved_cube = new_ref_cube_front_turned_clockwise();
-        solved_cube.r_counter_clock();
+        let mut ref_cube = new_ref_cube_front_turned_clockwise();
+        ref_cube.r_counter_clock();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
@@ -1190,10 +1190,10 @@ mod tests {
 
     #[test]
     fn right_double() {
-        let mut solved_cube = new_ref_cube_front_turned_clockwise();
-        solved_cube.r_double();
+        let mut ref_cube = new_ref_cube_front_turned_clockwise();
+        ref_cube.r_double();
         assert_eq!(
-            solved_cube,
+            ref_cube,
             Cube {
                 yellow: Face::new(
                     Color::Yellow,
