@@ -168,7 +168,7 @@ impl MoveCube for Cube {
     }
 
     fn b_counter_clock(&mut self) {
-        self.orange = self.orange.rotate_right(16);
+        self.orange = self.orange.rotate_left(16);
         let temp = self.yellow.upper_row();
         self.yellow
             .replace_side(self.blue.left_col().rotate_right(16), u64::UPPER_ROW_MASK);
