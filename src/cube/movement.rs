@@ -1264,4 +1264,627 @@ mod tests {
             }
         )
     }
+
+    #[test]
+    fn back_clockwise() {
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.b_clock();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red
+                )
+                .0,
+                blue: Face::new(
+                    Color::Red,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Yellow,
+                    Color::Blue,
+                    Color::Yellow,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+                red: Face::new(
+                    Color::Red,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::Red,
+                    Color::White
+                )
+                .0,
+                green: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Orange,
+                    Color::Green,
+                    Color::White,
+                    Color::Green,
+                    Color::Green,
+                    Color::White
+                )
+                .0,
+                orange: Face::new(
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange
+                )
+                .0,
+                white: Face::new(
+                    Color::White,
+                    Color::White,
+                    Color::Orange,
+                    Color::White,
+                    Color::Orange,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+            }
+        )
+    }
+
+    #[test]
+    fn back_counter_clockwise() {
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.b_counter_clock();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red
+                )
+                .0,
+                blue: Face::new(
+                    Color::White,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::White,
+                    Color::Blue,
+                    Color::Orange,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+                red: Face::new(
+                    Color::Red,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::Red,
+                    Color::White
+                )
+                .0,
+                green: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Yellow,
+                    Color::Green,
+                    Color::Yellow,
+                    Color::Green,
+                    Color::Green,
+                    Color::Red
+                )
+                .0,
+                orange: Face::new(
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Yellow
+                )
+                .0,
+                white: Face::new(
+                    Color::White,
+                    Color::White,
+                    Color::Orange,
+                    Color::White,
+                    Color::Orange,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green
+                )
+                .0,
+            }
+        )
+    }
+
+    #[test]
+    fn back_double() {
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.b_double();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Orange,
+                    Color::White,
+                    Color::White,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red
+                )
+                .0,
+                blue: Face::new(
+                    Color::Green,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Green,
+                    Color::Blue,
+                    Color::Green,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+                red: Face::new(
+                    Color::Red,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::Red,
+                    Color::White
+                )
+                .0,
+                green: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Blue,
+                    Color::Green,
+                    Color::Blue,
+                    Color::Green,
+                    Color::Green,
+                    Color::Blue
+                )
+                .0,
+                orange: Face::new(
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow
+                )
+                .0,
+                white: Face::new(
+                    Color::White,
+                    Color::White,
+                    Color::Orange,
+                    Color::White,
+                    Color::Orange,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow
+                )
+                .0,
+            }
+        )
+    }
+
+    #[test]
+    fn down_clockwise() {
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.d_clock();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red
+                )
+                .0,
+                blue: Face::new(
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange
+                )
+                .0,
+                red: Face::new(
+                    Color::Red,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::White,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+                green: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Red,
+                    Color::Red,
+                    Color::White
+                )
+                .0,
+                orange: Face::new(
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green
+                )
+                .0,
+                white: Face::new(
+                    Color::White,
+                    Color::White,
+                    Color::White,
+                    Color::White,
+                    Color::White,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange
+                )
+                .0,
+            }
+        )
+    }
+
+    #[test]
+    fn down_counter_clockwise() {
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.d_counter_clock();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red
+                )
+                .0,
+                blue: Face::new(
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Red,
+                    Color::Red,
+                    Color::White
+                )
+                .0,
+                red: Face::new(
+                    Color::Red,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::White,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green
+                )
+                .0,
+                green: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange
+                )
+                .0,
+                orange: Face::new(
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+                white: Face::new(
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::White,
+                    Color::White,
+                    Color::White,
+                    Color::White,
+                    Color::White
+                )
+                .0,
+            }
+        )
+    }
+
+    #[test]
+    fn down_double() {
+        let mut ref_cube = new_ref_cube_right_turned_clockwise();
+        ref_cube.d_double();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Red,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Red
+                )
+                .0,
+                blue: Face::new(
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green
+                )
+                .0,
+                red: Face::new(
+                    Color::Red,
+                    Color::Red,
+                    Color::White,
+                    Color::Red,
+                    Color::White,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange
+                )
+                .0,
+                green: Face::new(
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Green,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue
+                )
+                .0,
+                orange: Face::new(
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Red,
+                    Color::Red,
+                    Color::White
+                )
+                .0,
+                white: Face::new(
+                    Color::Orange,
+                    Color::White,
+                    Color::White,
+                    Color::Orange,
+                    Color::White,
+                    Color::Orange,
+                    Color::White,
+                    Color::White
+                )
+                .0,
+            }
+        )
+    }
+
+    #[test]
+    fn all_moves_random_cube() {
+        let mut ref_cube = Cube {
+            yellow: Face::new(
+                Color::Orange,
+                Color::Red,
+                Color::Orange,
+                Color::Blue,
+                Color::White,
+                Color::Blue,
+                Color::Red,
+                Color::Green,
+            )
+            .0,
+            blue: Face::new(
+                Color::White,
+                Color::Yellow,
+                Color::Red,
+                Color::Green,
+                Color::Green,
+                Color::Orange,
+                Color::White,
+                Color::Blue,
+            )
+            .0,
+            red: Face::new(
+                Color::Yellow,
+                Color::Yellow,
+                Color::Red,
+                Color::White,
+                Color::Red,
+                Color::Red,
+                Color::Blue,
+                Color::Blue,
+            )
+            .0,
+            green: Face::new(
+                Color::White,
+                Color::Orange,
+                Color::Yellow,
+                Color::Blue,
+                Color::Yellow,
+                Color::Orange,
+                Color::Orange,
+                Color::Green,
+            )
+            .0,
+            orange: Face::new(
+                Color::Green,
+                Color::White,
+                Color::Green,
+                Color::Orange,
+                Color::Red,
+                Color::Red,
+                Color::Green,
+                Color::White,
+            )
+            .0,
+            white: Face::new(
+                Color::White,
+                Color::Orange,
+                Color::Yellow,
+                Color::Blue,
+                Color::Green,
+                Color::Blue,
+                Color::Yellow,
+                Color::Yellow,
+            )
+            .0,
+        };
+        ref_cube.d_double();
+        ref_cube.r_double();
+        ref_cube.u_counter_clock();
+        ref_cube.f_clock();
+        ref_cube.l_double();
+        ref_cube.b_counter_clock();
+        ref_cube.r_clock();
+        ref_cube.d_clock();
+        ref_cube.b_double();
+        ref_cube.r_counter_clock();
+        ref_cube.f_double();
+        ref_cube.u_double();
+        ref_cube.l_clock();
+        ref_cube.f_counter_clock();
+        ref_cube.l_counter_clock();
+        ref_cube.u_clock();
+        ref_cube.b_clock();
+        ref_cube.d_counter_clock();
+        assert_eq!(
+            ref_cube,
+            Cube {
+                yellow: Face::new(
+                    Color::Red,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Green,
+                    Color::Red,
+                    Color::Orange,
+                    Color::Green,
+                    Color::Yellow
+                )
+                .0,
+                blue: Face::new(
+                    Color::White,
+                    Color::Red,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Blue,
+                    Color::Green,
+                    Color::Blue,
+                    Color::Red
+                )
+                .0,
+                red: Face::new(
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::Blue,
+                    Color::Yellow,
+                    Color::White,
+                    Color::Yellow,
+                    Color::Orange,
+                    Color::White
+                )
+                .0,
+                green: Face::new(
+                    Color::Red,
+                    Color::White,
+                    Color::White,
+                    Color::Green,
+                    Color::Yellow,
+                    Color::Green,
+                    Color::Red,
+                    Color::Green
+                )
+                .0,
+                orange: Face::new(
+                    Color::Blue,
+                    Color::Yellow,
+                    Color::Blue,
+                    Color::Green,
+                    Color::White,
+                    Color::White,
+                    Color::Red,
+                    Color::Orange
+                )
+                .0,
+                white: Face::new(
+                    Color::Green,
+                    Color::White,
+                    Color::Orange,
+                    Color::Orange,
+                    Color::Yellow,
+                    Color::Yellow,
+                    Color::Blue,
+                    Color::Red
+                )
+                .0,
+            }
+        )
+    }
 }
