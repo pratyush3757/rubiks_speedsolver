@@ -1,5 +1,7 @@
 mod cube;
 
+use cube::Cube;
+
 fn main() {
-    let a = cube::Cube::new();
+    let a = Cube::new();
 }
