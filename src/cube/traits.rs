@@ -30,36 +30,36 @@ pub trait FaceBitMask {
     fn down(&self) -> u8;
     fn down_left(&self) -> u8;
     fn left(&self) -> u8;
-    
+
     fn upper_row(&self) -> u64;
     fn down_row(&self) -> u64;
     fn left_col(&self) -> u64;
     fn right_col(&self) -> u64;
-    
+
     fn replace_side(&mut self, with: u64, mask: u64);
 }
 
 impl FaceBitMask for u64 {
     fn upper_left(&self) -> u8 {
-        ((self >>56) & 0xff_u64) as u8
+        ((self >> 56) & 0xff_u64) as u8
     }
     fn upper(&self) -> u8 {
-        ((self >>48) & 0xff_u64) as u8
+        ((self >> 48) & 0xff_u64) as u8
     }
     fn upper_right(&self) -> u8 {
-        ((self >>40) & 0xff_u64) as u8
+        ((self >> 40) & 0xff_u64) as u8
     }
     fn right(&self) -> u8 {
-        ((self >>32) & 0xff_u64) as u8
+        ((self >> 32) & 0xff_u64) as u8
     }
     fn down_right(&self) -> u8 {
-        ((self >>24) & 0xff_u64) as u8
+        ((self >> 24) & 0xff_u64) as u8
     }
     fn down(&self) -> u8 {
-        ((self >>16) & 0xff_u64) as u8
+        ((self >> 16) & 0xff_u64) as u8
     }
     fn down_left(&self) -> u8 {
-        ((self >>8) & 0xff_u64) as u8
+        ((self >> 8) & 0xff_u64) as u8
     }
     fn left(&self) -> u8 {
         (self & 0xff_u64) as u8
@@ -104,4 +104,3 @@ pub trait MoveCube {
     fn d_counter_clock(&mut self);
     fn d_double(&mut self);
 }
-
