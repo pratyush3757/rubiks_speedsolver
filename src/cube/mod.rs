@@ -7,12 +7,12 @@ use self::traits::FaceBitMask;
 
 #[derive(Debug, PartialEq)]
 pub struct Cube {
-    yellow: u64, // U
-    blue: u64,   // L
-    red: u64,    // F
-    green: u64,  // R
-    orange: u64, // B
-    white: u64,  // D
+    u_face: u64,    // yellow
+    l_face: u64,    // blue
+    f_face: u64,    // red
+    r_face: u64,    // green
+    b_face: u64,    // orange
+    d_face: u64,    // white
 }
 
 impl Cube {
@@ -30,56 +30,56 @@ impl Cube {
             green: 0x10_10_10_10_10_10_10_10u64, // 1157442765409226768
             orange: 0x20_20_20_20_20_20_20_20u64, // 2314885530818453536
             white: 0x40_40_40_40_40_40_40_40u64, // 4629771061636907072 */
-            yellow: Face::new_solved(Color::Yellow).0,
-            blue: Face::new_solved(Color::Blue).0,
-            red: Face::new_solved(Color::Red).0,
-            green: Face::new_solved(Color::Green).0,
-            orange: Face::new_solved(Color::Orange).0,
-            white: Face::new_solved(Color::White).0,
+            u_face: Face::new_solved(Color::Yellow).0,
+            l_face: Face::new_solved(Color::Blue).0,
+            f_face: Face::new_solved(Color::Red).0,
+            r_face: Face::new_solved(Color::Green).0,
+            b_face: Face::new_solved(Color::Orange).0,
+            d_face: Face::new_solved(Color::White).0,
         }
     }
 
     pub fn get_corner_cubie(&self, position: &CornerPosition) -> Cubie {
         let (color_1, color_2, color_3) = match position {
             CornerPosition::UBL => (
-                self.yellow.upper_left(),
-                self.orange.upper_right(),
-                self.blue.upper_left(),
+                self.u_face.upper_left(),
+                self.b_face.upper_right(),
+                self.l_face.upper_left(),
             ),
             CornerPosition::UBR => (
-                self.yellow.upper_right(),
-                self.orange.upper_left(),
-                self.green.upper_right(),
+                self.u_face.upper_right(),
+                self.b_face.upper_left(),
+                self.r_face.upper_right(),
             ),
             CornerPosition::UFL => (
-                self.yellow.down_left(),
-                self.red.upper_left(),
-                self.blue.upper_right(),
+                self.u_face.down_left(),
+                self.f_face.upper_left(),
+                self.l_face.upper_right(),
             ),
             CornerPosition::UFR => (
-                self.yellow.down_right(),
-                self.red.upper_right(),
-                self.green.upper_left(),
+                self.u_face.down_right(),
+                self.f_face.upper_right(),
+                self.r_face.upper_left(),
             ),
             CornerPosition::DBL => (
-                self.white.down_left(),
-                self.orange.down_right(),
-                self.blue.down_left(),
+                self.d_face.down_left(),
+                self.b_face.down_right(),
+                self.l_face.down_left(),
             ),
             CornerPosition::DBR => (
-                self.white.down_right(),
-                self.orange.down_left(),
-                self.green.down_right(),
+                self.d_face.down_right(),
+                self.b_face.down_left(),
+                self.r_face.down_right(),
             ),
             CornerPosition::DFL => (
-                self.white.upper_left(),
-                self.red.down_left(),
-                self.blue.down_right(),
+                self.d_face.upper_left(),
+                self.f_face.down_left(),
+                self.l_face.down_right(),
             ),
             CornerPosition::DFR => (
-                self.white.upper_right(),
-                self.red.down_right(),
-                self.green.down_left(),
+                self.d_face.upper_right(),
+                self.f_face.down_right(),
+                self.r_face.down_left(),
             ),
             // _ => unreachable!(),
         };
@@ -88,18 +88,18 @@ impl Cube {
 
     pub fn get_edge_cubie(&self, position: &EdgePosition) -> Cubie {
         let (color_1, color_2) = match position {
-            EdgePosition::UB => (self.yellow.upper(), self.orange.upper()),
-            EdgePosition::UL => (self.yellow.left(), self.blue.upper()),
-            EdgePosition::UR => (self.yellow.right(), self.green.upper()),
-            EdgePosition::UF => (self.yellow.down(), self.red.upper()),
-            EdgePosition::BL => (self.orange.left(), self.blue.right()),
-            EdgePosition::BR => (self.orange.left(), self.green.right()),
-            EdgePosition::FL => (self.red.right(), self.blue.left()),
-            EdgePosition::FR => (self.red.right(), self.green.left()),
-            EdgePosition::DB => (self.white.down(), self.orange.down()),
-            EdgePosition::DL => (self.white.left(), self.blue.down()),
-            EdgePosition::DR => (self.white.right(), self.green.down()),
-            EdgePosition::DF => (self.white.upper(), self.red.down()),
+            EdgePosition::UB => (self.u_face.upper(), self.b_face.upper()),
+            EdgePosition::UL => (self.u_face.left(), self.l_face.upper()),
+            EdgePosition::UR => (self.u_face.right(), self.r_face.upper()),
+            EdgePosition::UF => (self.u_face.down(), self.f_face.upper()),
+            EdgePosition::BL => (self.b_face.left(), self.l_face.right()),
+            EdgePosition::BR => (self.b_face.left(), self.r_face.right()),
+            EdgePosition::FL => (self.f_face.right(), self.l_face.left()),
+            EdgePosition::FR => (self.f_face.right(), self.r_face.left()),
+            EdgePosition::DB => (self.d_face.down(), self.b_face.down()),
+            EdgePosition::DL => (self.d_face.left(), self.l_face.down()),
+            EdgePosition::DR => (self.d_face.right(), self.r_face.down()),
+            EdgePosition::DF => (self.d_face.upper(), self.f_face.down()),
             // _ => unreachable!(),
         };
         Cubie::new(color_1, color_2, 0)
