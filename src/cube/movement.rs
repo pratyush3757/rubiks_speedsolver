@@ -1,7 +1,9 @@
-use crate::cube::traits::{FaceBitMask, MoveCube};
+use crate::cube::traits::{FaceBitMask, MoveCubeFace};
 use crate::cube::Cube;
 
-impl MoveCube for Cube {
+use super::traits::RotateCube;
+
+impl MoveCubeFace for Cube {
     fn u_clock(&mut self) {
         self.u_face = self.u_face.rotate_right(16);
         let temp = self.b_face.upper_row();
@@ -81,8 +83,10 @@ impl MoveCube for Cube {
         let temp = self.u_face.down_row();
         self.u_face
             .replace_side(self.l_face.right_col().rotate_right(16), u64::DOWN_ROW_MASK);
-        self.l_face
-            .replace_side(self.d_face.upper_row().rotate_right(16), u64::RIGHT_COL_MASK);
+        self.l_face.replace_side(
+            self.d_face.upper_row().rotate_right(16),
+            u64::RIGHT_COL_MASK,
+        );
         self.d_face
             .replace_side(self.r_face.left_col().rotate_right(16), u64::UPPER_ROW_MASK);
         self.r_face
@@ -231,9 +235,66 @@ impl MoveCube for Cube {
     }
 }
 
+impl RotateCube for Cube {
+    fn x_clock(&mut self) {
+        unimplemented!();
+    }
+    fn x_counter_clock(&mut self) {
+        unimplemented!();
+    }
+    fn x_double(&mut self) {
+        unimplemented!();
+    }
+    fn y_clock(&mut self) {
+        unimplemented!();
+    }
+    fn y_counter_clock(&mut self) {
+        unimplemented!();
+    }
+    fn y_double(&mut self) {
+        unimplemented!();
+    }
+    fn z_clock(&mut self) {
+        unimplemented!();
+    }
+    fn z_counter_clock(&mut self) {
+        unimplemented!();
+    }
+    fn z_double(&mut self) {
+        unimplemented!();
+    }
+    fn m_clock(&mut self) {
+        unimplemented!();
+    }
+    fn m_counter_clock(&mut self) {
+        unimplemented!();
+    }
+    fn m_double(&mut self) {
+        unimplemented!();
+    }
+    fn e_clock(&mut self) {
+        unimplemented!();
+    }
+    fn e_counter_clock(&mut self) {
+        unimplemented!();
+    }
+    fn e_double(&mut self) {
+        unimplemented!();
+    }
+    fn s_clock(&mut self) {
+        unimplemented!();
+    }
+    fn s_counter_clock(&mut self) {
+        unimplemented!();
+    }
+    fn s_double(&mut self) {
+        unimplemented!();
+    }
+}
+
 #[cfg(test)]
 mod tests {
-    use crate::cube::{enums::Color, traits::MoveCube, Face};
+    use crate::cube::{enums::Color, traits::MoveCubeFace, Face};
 
     use super::Cube;
 

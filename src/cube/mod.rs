@@ -7,12 +7,12 @@ use self::traits::FaceBitMask;
 
 #[derive(Debug, PartialEq)]
 pub struct Cube {
-    u_face: u64,    // yellow
-    l_face: u64,    // blue
-    f_face: u64,    // red
-    r_face: u64,    // green
-    b_face: u64,    // orange
-    d_face: u64,    // white
+    u_face: u64, // yellow
+    l_face: u64, // blue
+    f_face: u64, // red
+    r_face: u64, // green
+    b_face: u64, // orange
+    d_face: u64, // white
 }
 
 impl Cube {

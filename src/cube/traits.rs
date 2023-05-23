@@ -84,7 +84,7 @@ impl FaceBitMask for u64 {
     }
 }
 
-pub trait MoveCube {
+pub trait MoveCubeFace {
     fn u_clock(&mut self);
     fn u_counter_clock(&mut self);
     fn u_double(&mut self);
@@ -103,4 +103,25 @@ pub trait MoveCube {
     fn d_clock(&mut self);
     fn d_counter_clock(&mut self);
     fn d_double(&mut self);
+}
+
+pub trait RotateCube {
+    fn x_clock(&mut self);
+    fn x_counter_clock(&mut self);
+    fn x_double(&mut self);
+    fn y_clock(&mut self);
+    fn y_counter_clock(&mut self);
+    fn y_double(&mut self);
+    fn z_clock(&mut self);
+    fn z_counter_clock(&mut self);
+    fn z_double(&mut self);
+    fn m_clock(&mut self);
+    fn m_counter_clock(&mut self);
+    fn m_double(&mut self);
+    fn e_clock(&mut self);
+    fn e_counter_clock(&mut self);
+    fn e_double(&mut self);
+    fn s_clock(&mut self);
+    fn s_counter_clock(&mut self);
+    fn s_double(&mut self);
 }
