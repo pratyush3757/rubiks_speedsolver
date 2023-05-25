@@ -1,4 +1,5 @@
 mod cube;
+mod solver;
 
 use cube::Cube;
 

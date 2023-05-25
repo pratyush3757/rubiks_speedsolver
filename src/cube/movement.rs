@@ -1,7 +1,5 @@
-use crate::cube::traits::{FaceBitMask, MoveCubeFace};
-use crate::cube::Cube;
-
-use super::traits::RotateCube;
+use super::traits::{FaceBitMask, MoveCubeFace, RotateCube};
+use super::Cube;
 
 impl MoveCubeFace for Cube {
     fn u_clock(&mut self) {

@@ -1,6 +1,6 @@
 mod enums;
 mod movement;
-mod traits;
+pub mod traits;
 
 use self::enums::{Color, CornerPosition, EdgePosition};
 use self::traits::FaceBitMask;
