@@ -1,70 +1,142 @@
-mod colors;
-mod traits;
+mod enums;
+mod movement;
+pub mod traits;
 
-use traits::FaceBitMask;
+use self::enums::{Color, CornerPosition, EdgePosition};
+use self::traits::FaceBitMask;
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 pub struct Cube {
-    Red: u64,
-    Orange: u64,
-    Green: u64,
-    Blue: u64,
-    Yellow: u64,
-    White: u64,
+    u_face: u64, // yellow
+    l_face: u64, // blue
+    f_face: u64, // red
+    r_face: u64, // green
+    b_face: u64, // orange
+    d_face: u64, // white
 }
-
-impl FaceBitMask for Cube {}
 
 impl Cube {
     pub fn new() -> Self {
-        /* let mut red: u64 = 0;
+        /* let mut color: u64 = 0;
         for i in 0..8 {
-            red |= 1 << ((i*8) + Colors::Red as u8);
+            color |= Color::Yellow << (i*8);
         } */
-        
+
         // The numbers represent solved faces
         Cube {
-            Red: 0x02_02_02_02_02_02_02_02u64, // 144680345676153346
-            Orange: 0x04_04_04_04_04_04_04_04u64, // 289360691352306692
-            Green: 0x08_08_08_08_08_08_08_08u64, // 578721382704613384
-            Blue: 0x10_10_10_10_10_10_10_10u64, // 1157442765409226768
-            Yellow: 0x20_20_20_20_20_20_20_20u64, // 2314885530818453536
-            White: 0x40_40_40_40_40_40_40_40u64, // 4629771061636907072
+            /* yellow: 0x02_02_02_02_02_02_02_02u64, // 144680345676153346
+            blue: 0x04_04_04_04_04_04_04_04u64, // 289360691352306692
+            red: 0x08_08_08_08_08_08_08_08u64, // 578721382704613384
+            green: 0x10_10_10_10_10_10_10_10u64, // 1157442765409226768
+            orange: 0x20_20_20_20_20_20_20_20u64, // 2314885530818453536
+            white: 0x40_40_40_40_40_40_40_40u64, // 4629771061636907072 */
+            u_face: Face::new_solved(Color::Yellow).0,
+            l_face: Face::new_solved(Color::Blue).0,
+            f_face: Face::new_solved(Color::Red).0,
+            r_face: Face::new_solved(Color::Green).0,
+            b_face: Face::new_solved(Color::Orange).0,
+            d_face: Face::new_solved(Color::White).0,
         }
     }
 
-    pub fn get_corner_cubie(&self, position: u8) -> Cubie {
+    pub fn get_corner_cubie(&self, position: &CornerPosition) -> Cubie {
         let (color_1, color_2, color_3) = match position {
-            1 => { (Self::upper_left(self.Yellow), Self::upper_right(self.Orange), Self::upper_left(self.Blue)) },
-            3 => { (Self::upper_right(self.Yellow), Self::upper_left(self.Orange), Self::upper_right(self.Green)) },
-            6 => { (Self::down_left(self.Yellow), Self::upper_left(self.Red), Self::upper_right(self.Blue)) },
-            8 => { (Self::down_right(self.Yellow), Self::upper_right(self.Red), Self::upper_left(self.Green)) },
-            13 => { (Self::down_left(self.White), Self::down_right(self.Orange), Self::down_left(self.Blue)) },
-            15 => { (Self::down_right(self.White), Self::down_left(self.Orange), Self::down_right(self.Green)) },
-            18 => { (Self::upper_left(self.White), Self::down_left(self.Red), Self::down_right(self.Blue)) },
-            20 => { (Self::upper_right(self.White), Self::down_right(self.Red), Self::down_left(self.Green)) },
-            _ => unreachable!(),
+            CornerPosition::UBL => (
+                self.u_face.upper_left(),
+                self.b_face.upper_right(),
+                self.l_face.upper_left(),
+            ),
+            CornerPosition::UBR => (
+                self.u_face.upper_right(),
+                self.b_face.upper_left(),
+                self.r_face.upper_right(),
+            ),
+            CornerPosition::UFL => (
+                self.u_face.down_left(),
+                self.f_face.upper_left(),
+                self.l_face.upper_right(),
+            ),
+            CornerPosition::UFR => (
+                self.u_face.down_right(),
+                self.f_face.upper_right(),
+                self.r_face.upper_left(),
+            ),
+            CornerPosition::DBL => (
+                self.d_face.down_left(),
+                self.b_face.down_right(),
+                self.l_face.down_left(),
+            ),
+            CornerPosition::DBR => (
+                self.d_face.down_right(),
+                self.b_face.down_left(),
+                self.r_face.down_right(),
+            ),
+            CornerPosition::DFL => (
+                self.d_face.upper_left(),
+                self.f_face.down_left(),
+                self.l_face.down_right(),
+            ),
+            CornerPosition::DFR => (
+                self.d_face.upper_right(),
+                self.f_face.down_right(),
+                self.r_face.down_left(),
+            ),
+            // _ => unreachable!(),
         };
         Cubie::new(color_1, color_2, color_3)
     }
-    
-    pub fn get_edge_cubie(&self, position: u8) -> Cubie {
+
+    pub fn get_edge_cubie(&self, position: &EdgePosition) -> Cubie {
         let (color_1, color_2) = match position {
-            2 => { (Self::upper(self.Yellow), Self::upper(self.Orange)) },
-            4 => { (Self::left(self.Yellow), Self::upper(self.Blue)) },
-            5 => { (Self::right(self.Yellow), Self::upper(self.Green)) },
-            7 => { (Self::down(self.Yellow), Self::upper(self.Red)) },
-            9 => { (Self::left(self.Blue), Self::right(self.Orange)) },
-            10 => { (Self::left(self.Orange), Self::right(self.Green)) },
-            11 => { (Self::right(self.Blue), Self::left(self.Red)) },
-            12 => { (Self::right(self.Red), Self::left(self.Green)) },
-            14 => { (Self::down(self.White), Self::down(self.Orange)) },
-            16 => { (Self::left(self.White), Self::down(self.Blue)) },
-            17 => { (Self::right(self.White), Self::down(self.Green)) },
-            19 => { (Self::upper(self.White), Self::down(self.Red)) },
-            _ => unreachable!(),
+            EdgePosition::UB => (self.u_face.upper(), self.b_face.upper()),
+            EdgePosition::UL => (self.u_face.left(), self.l_face.upper()),
+            EdgePosition::UR => (self.u_face.right(), self.r_face.upper()),
+            EdgePosition::UF => (self.u_face.down(), self.f_face.upper()),
+            EdgePosition::BL => (self.b_face.left(), self.l_face.right()),
+            EdgePosition::BR => (self.b_face.left(), self.r_face.right()),
+            EdgePosition::FL => (self.f_face.right(), self.l_face.left()),
+            EdgePosition::FR => (self.f_face.right(), self.r_face.left()),
+            EdgePosition::DB => (self.d_face.down(), self.b_face.down()),
+            EdgePosition::DL => (self.d_face.left(), self.l_face.down()),
+            EdgePosition::DR => (self.d_face.right(), self.r_face.down()),
+            EdgePosition::DF => (self.d_face.upper(), self.f_face.down()),
+            // _ => unreachable!(),
         };
         Cubie::new(color_1, color_2, 0)
+    }
+}
+
+#[derive(Debug)]
+struct Face(u64);
+
+impl Face {
+    #![allow(clippy::too_many_arguments)]
+    fn new(
+        facelet_1: Color,
+        facelet_2: Color,
+        facelet_3: Color,
+        facelet_4: Color,
+        facelet_5: Color,
+        facelet_6: Color,
+        facelet_7: Color,
+        facelet_8: Color,
+    ) -> Self {
+        Face(
+            (facelet_1 as u64) << 56
+                | (facelet_2 as u64) << 48
+                | (facelet_3 as u64) << 40
+                | (facelet_5 as u64) << 32
+                | (facelet_8 as u64) << 24
+                | (facelet_7 as u64) << 16
+                | (facelet_6 as u64) << 8
+                | (facelet_4 as u64),
+        )
+    }
+
+    fn new_solved(facelet: Color) -> Self {
+        Self::new(
+            facelet, facelet, facelet, facelet, facelet, facelet, facelet, facelet,
+        )
     }
 }
 
@@ -75,14 +147,12 @@ pub struct Cubie {
 
 impl Cubie {
     fn new(color_1: u8, color_2: u8, color_3: u8) -> Self {
-        let mut colors = 0u8;
-        colors |= 1 << color_1;
-        colors |= 1 << color_2;
-        colors |= 1 << color_3;
-        Cubie { colors }
+        Cubie {
+            colors: color_1 | color_2 | color_3,
+        }
     }
 }
 
-pub fn find_cubie(cubie: Cubie) -> u8 {
+pub fn find_cubie(cubie: &Cubie) -> u8 {
     unimplemented!();
 }
